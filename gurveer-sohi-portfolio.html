@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gurveer Singh Sohi — IT Infrastructure &amp; Cloud Security</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root{
+    --bg: #0F1B24;
+    --surface: #16262F;
+    --surface-2: #1C2E38;
+    --line: #263B45;
+    --text: #E7EDF0;
+    --text-dim: #93A7AF;
+    --text-faint: #5E747C;
+    --amber: #C98A3E;
+    --teal: #4C8C7D;
+    --max: 880px;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  .mono{ font-family: 'IBM Plex Mono', monospace; }
+
+  a{ color: inherit; text-decoration: none; }
+
+  .wrap{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---- NAV ---- */
+  nav{
+    position: sticky; top:0; z-index: 10;
+    background: rgba(15,27,36,0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height: 60px;
+  }
+  nav .name{ font-weight:600; font-size:15px; letter-spacing: 0.01em; }
+  nav .links{ display:flex; gap:28px; font-size:14px; color: var(--text-dim); }
+  nav .links a:hover{ color: var(--amber); }
+  @media (max-width: 560px){ nav .links{ display:none; } }
+
+  /* ---- HERO ---- */
+  header.hero{
+    padding: 88px 0 64px;
+    border-bottom: 1px solid var(--line);
+  }
+  .kicker{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--teal);
+    margin-bottom: 18px;
+  }
+  .kicker::before{ content: "● "; color: var(--teal); }
+  h1{
+    font-size: clamp(34px, 5vw, 50px);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    max-width: 11ch;
+  }
+  .role{
+    margin-top: 14px;
+    font-size: 18px;
+    color: var(--text-dim);
+    max-width: 46ch;
+  }
+  .hero-stats{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: 44px;
+  }
+  .stat{ background: var(--bg); padding: 20px 18px; }
+  .stat .num{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 28px; font-weight: 600; color: var(--amber);
+  }
+  .stat .label{ font-size: 13px; color: var(--text-dim); margin-top: 6px; }
+  @media (max-width: 560px){ .hero-stats{ grid-template-columns: 1fr; } }
+
+  .hero-actions{ display:flex; gap:14px; margin-top: 36px; flex-wrap: wrap; }
+  .btn{
+    display:inline-block; padding: 11px 20px; font-size: 14px; font-weight: 500;
+    border-radius: 3px; border: 1px solid var(--line);
+  }
+  .btn-primary{ background: var(--amber); color: #14100A; border-color: var(--amber); }
+  .btn-primary:hover{ background: #DA9B52; }
+  .btn-ghost{ color: var(--text); }
+  .btn-ghost:hover{ border-color: var(--text-dim); }
+
+  /* ---- SECTION shared ---- */
+  section{ padding: 64px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type{ border-bottom: none; }
+  h2{
+    font-size: 22px; font-weight: 600; margin-bottom: 32px;
+    display:flex; align-items:baseline; gap: 10px;
+  }
+  h2 span.idx{
+    font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: var(--text-faint);
+  }
+
+  /* ---- ABOUT ---- */
+  .about p{ color: var(--text-dim); max-width: 68ch; margin-bottom: 16px; font-size: 15.5px; }
+  .about strong{ color: var(--text); font-weight: 600; }
+
+  /* ---- SKILLS ---- */
+  .skill-grid{
+    display:grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+    background: var(--line); border: 1px solid var(--line);
+  }
+  @media (max-width: 620px){ .skill-grid{ grid-template-columns: 1fr; } }
+  .skill-card{ background: var(--surface); padding: 22px 24px; }
+  .skill-card h3{
+    font-size: 14px; font-weight: 600; color: var(--teal);
+    font-family: 'IBM Plex Mono', monospace; margin-bottom: 12px;
+  }
+  .skill-card ul{ list-style:none; }
+  .skill-card li{
+    font-size: 14.5px; color: var(--text-dim); padding: 5px 0;
+    border-top: 1px solid var(--surface-2);
+  }
+  .skill-card li:first-child{ border-top: none; }
+  .tag-exposure{
+    font-size: 11px; color: var(--amber); margin-left: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* ---- EXPERIENCE ---- */
+  .job{ display:grid; grid-template-columns: 130px 1fr; gap: 24px; padding: 26px 0; border-top: 1px solid var(--line); }
+  .job:first-of-type{ border-top: none; }
+  .job .period{ font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--text-faint); padding-top: 3px; }
+  .job h3{ font-size: 16.5px; font-weight: 600; }
+  .job .org{ font-size: 14px; color: var(--teal); margin-top: 2px; margin-bottom: 10px; }
+  .job p{ font-size: 14.5px; color: var(--text-dim); max-width: 62ch; }
+  @media (max-width: 560px){ .job{ grid-template-columns: 1fr; gap: 6px; } }
+
+  /* ---- CERTS ---- */
+  .cert-list{ display:flex; flex-direction:column; gap:0; }
+  .cert{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 14px 0; border-top: 1px solid var(--line); font-size: 14.5px;
+  }
+  .cert:first-child{ border-top: none; }
+  .cert .status{
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+    padding: 3px 9px; border-radius: 3px;
+  }
+  .status-done{ color: var(--teal); border: 1px solid var(--teal); }
+  .status-progress{ color: var(--amber); border: 1px solid var(--amber); }
+  .cert-goal{
+    margin-top: 22px; padding: 16px 18px; background: var(--surface);
+    border-left: 2px solid var(--amber); font-size: 14px; color: var(--text-dim);
+  }
+
+  /* ---- CONTACT ---- */
+  footer{ padding: 70px 0 60px; }
+  footer h2{ margin-bottom: 14px; }
+  footer p{ color: var(--text-dim); max-width: 50ch; margin-bottom: 30px; font-size: 15px; }
+  .contact-row{ display:flex; gap: 16px; flex-wrap: wrap; }
+  .fine{ margin-top: 50px; font-size: 12.5px; color: var(--text-faint); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="name mono">G. SOHI</div>
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#certs">Certifications</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker mono">AVAILABLE FOR NEW ROLES · SURREY, BC</div>
+    <h1>Gurveer Singh Sohi</h1>
+    <p class="role">Enterprise infrastructure professional moving into cloud security — ten years keeping networks, systems, and health services running, now building toward CCSP.</p>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="num">10+</div>
+        <div class="label">Years in enterprise IT</div>
+      </div>
+      <div class="stat">
+        <div class="num">4</div>
+        <div class="label">Roles, one health authority</div>
+      </div>
+      <div class="stat">
+        <div class="num">3</div>
+        <div class="label">Certifications in progress</div>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="mailto:gurveersohi@hotmail.com">Email me</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/gurveer-sohi-59a7896a" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="#experience">See experience</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <h2><span class="idx mono">01</span>About</h2>
+    <div class="about">
+      <p>I'm a <strong>Regional Technical Analyst</strong> at the First Nations Health Authority, where I support network and cloud infrastructure across regional offices and remote clinics — Cisco switches, VeloCloud SD-WAN, Palo Alto firewalls, and the Microsoft 365 / Azure environment underneath it all. When a rural clinic loses connectivity, the fix has to be fast, documented, and right the first time.</p>
+      <p>Ten years of that discipline — root-cause analysis, vendor coordination, incident response — is now pointed at a specific goal: moving from infrastructure support into <strong>cloud security</strong>. I'm currently working through a BCIT cybersecurity microcredential and Microsoft certifications (MD-102, PL-900) as part of a longer-term path to <strong>(ISC)² CCSP</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2><span class="idx mono">02</span>Skills</h2>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <h3>CLOUD &amp; IDENTITY</h3>
+        <ul>
+          <li>Microsoft Azure &amp; Active Directory</li>
+          <li>Microsoft 365 &amp; Exchange</li>
+          <li>Entra ID &amp; Intune <span class="tag-exposure">working exposure</span></li>
+          <li>Conditional Access / MFA <span class="tag-exposure">working exposure</span></li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>NETWORKING &amp; SECURITY</h3>
+        <ul>
+          <li>Cisco Catalyst switching</li>
+          <li>VeloCloud SD-WAN</li>
+          <li>Palo Alto firewalls</li>
+          <li>Defender &amp; Purview DLP <span class="tag-exposure">working exposure</span></li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>OPERATIONS &amp; ITSM</h3>
+        <ul>
+          <li>SolarWinds monitoring</li>
+          <li>ServiceNow &amp; BMC Remedy</li>
+          <li>SCCM &amp; Windows Server</li>
+          <li>Incident &amp; root-cause analysis</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>AUTOMATION &amp; DEV</h3>
+        <ul>
+          <li>PowerShell <span class="tag-exposure">basic scripting</span></li>
+          <li>Python, C#, Java, SQL</li>
+          <li>VoIP &amp; CUCM systems</li>
+          <li>Documentation &amp; knowledge base</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2><span class="idx mono">03</span>Experience</h2>
+
+    <div class="job">
+      <div class="period mono">2021 —<br>PRESENT</div>
+      <div>
+        <h3>Regional Technical Analyst</h3>
+        <div class="org">First Nations Health Authority</div>
+        <p>Support network and cloud infrastructure across regional offices and remote clinics. Coordinate vendor and internal teams to restore service with minimal downtime, and lead cross-functional meetings with nursing, facilities, and IMIT teams.</p>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="period mono">2018 —<br>2021</div>
+      <div>
+        <h3>Network Analyst</h3>
+        <div class="org">First Nations Health Authority</div>
+        <p>Provided Tier 2 support and structured root-cause analysis for network, server, and telehealth systems. Planned infrastructure for new offices and supported audio-visual systems for organization-wide events.</p>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="period mono">2017 —<br>2018</div>
+      <div>
+        <h3>Lead Technical Support Analyst</h3>
+        <div class="org">First Nations Health Authority</div>
+        <p>Primary IT support for nursing stations and health centers across Northern BC — first point of contact for nurses working in remote communities.</p>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="period mono">2014 —<br>2017</div>
+      <div>
+        <h3>Senior Technical Support Analyst</h3>
+        <div class="org">Douglas College CEIT</div>
+        <p>Managed 100+ concurrent service requests spanning audio-visual systems, access rights, and connectivity, using BMC Remedy to prioritize and track resolution.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certs">
+  <div class="wrap">
+    <h2><span class="idx mono">04</span>Certifications</h2>
+    <div class="cert-list">
+      <div class="cert"><span>ITIL 4 Foundation</span><span class="status status-done mono">2020</span></div>
+      <div class="cert"><span>CCNA</span><span class="status status-done mono">2018</span></div>
+      <div class="cert"><span>Applied IT Security</span><span class="status status-done mono">2021</span></div>
+      <div class="cert"><span>AWS Cloud Computing</span><span class="status status-done mono">2025</span></div>
+      <div class="cert"><span>BCIT Cybersecurity Microcredential</span><span class="status status-progress mono">In progress</span></div>
+      <div class="cert"><span>Microsoft MD-102</span><span class="status status-progress mono">In progress</span></div>
+      <div class="cert"><span>Microsoft PL-900</span><span class="status status-progress mono">In progress</span></div>
+    </div>
+    <div class="cert-goal">Long-term goal: <strong style="color:var(--text)">(ISC)&sup2; CCSP</strong> — Certified Cloud Security Professional.</div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2><span class="idx mono">05</span>Get in touch</h2>
+    <p>Open to infrastructure, cloud administration, and security-adjacent roles across Metro Vancouver. Happy to talk through how ten years of enterprise IT translates into your cloud security team.</p>
+    <div class="contact-row">
+      <a class="btn btn-primary" href="mailto:gurveersohi@hotmail.com">gurveersohi@hotmail.com</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/gurveer-sohi-59a7896a" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn btn-ghost" href="#about">Back to top</a>
+    </div>
+    <div class="fine mono">SURREY, BC · CANADA</div>
+  </div>
+</footer>
+
+</body>
+</html>
