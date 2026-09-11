@@ -174,8 +174,12 @@
   /* ---- CERTS ---- */
   .cert-list{ display:flex; flex-direction:column; gap:0; }
   .cert{
-    display:flex; align-items:center; justify-content:space-between;
+    display:flex; align-items:center; justify-content:space-between; gap: 16px;
     padding: 14px 0; border-top: 1px solid var(--line); font-size: 14.5px;
+  }
+  .cert .status{ flex-shrink: 0; }
+  @media (max-width: 560px){
+    .cert{ flex-wrap: wrap; }
   }
   .cert:first-child{ border-top: none; }
   .cert .status{
@@ -228,7 +232,7 @@
         <div class="label">Roles, one health authority</div>
       </div>
       <div class="stat">
-        <div class="num">3</div>
+        <div class="num">5</div>
         <div class="label">Certifications in progress</div>
       </div>
     </div>
@@ -246,7 +250,7 @@
     <h2><span class="idx mono">01</span>About</h2>
     <div class="about">
       <p>I'm a <strong>Regional Technical Analyst</strong> at the First Nations Health Authority, where I support network and cloud infrastructure across regional offices and remote clinics — Cisco switches, VeloCloud SD-WAN, Palo Alto firewalls, and the Microsoft 365 / Azure environment underneath it all. When a rural clinic loses connectivity, the fix has to be fast, documented, and right the first time.</p>
-      <p>Ten years of that discipline — root-cause analysis, vendor coordination, incident response — is now pointed at a specific goal: moving from infrastructure support into <strong>cloud security</strong>. I'm currently working through a BCIT cybersecurity microcredential and Microsoft certifications (MD-102, PL-900) as part of a longer-term path to <strong>(ISC)² CCSP</strong>.</p>
+      <p>Ten years of that discipline — root-cause analysis, vendor coordination, incident response — is now pointed at a specific goal: moving from infrastructure support into <strong>cloud security</strong>. I'm currently working through a BCIT cybersecurity microcredential and a set of Microsoft Modern Work certifications (MD-102, MS-102, MS-700, MS-721) as part of a longer-term path to <strong>(ISC)² CCSP</strong>.</p>
     </div>
   </div>
 </section>
@@ -345,9 +349,11 @@
       <div class="cert"><span>CCNA</span><span class="status status-done mono">2018</span></div>
       <div class="cert"><span>Applied IT Security</span><span class="status status-done mono">2021</span></div>
       <div class="cert"><span>AWS Cloud Computing</span><span class="status status-done mono">2025</span></div>
+      <div class="cert"><span>Microsoft MD-102: Endpoint Administrator Associate</span><span class="status status-progress mono">In progress</span></div>
+      <div class="cert"><span>Microsoft MS-102: Administrator Expert</span><span class="status status-progress mono">In progress</span></div>
       <div class="cert"><span>BCIT Cybersecurity Microcredential</span><span class="status status-progress mono">In progress</span></div>
-      <div class="cert"><span>Microsoft MD-102</span><span class="status status-progress mono">In progress</span></div>
-      <div class="cert"><span>Microsoft PL-900</span><span class="status status-progress mono">In progress</span></div>
+      <div class="cert"><span>Microsoft MS-700: Teams Administrator Associate</span><span class="status status-progress mono">In progress</span></div>
+      <div class="cert"><span>Microsoft MS-721: Collaboration Comms Systems Engineer</span><span class="status status-progress mono">In progress</span></div>
     </div>
     <div class="cert-goal">Long-term goal: <strong style="color:var(--text)">(ISC)&sup2; CCSP</strong> — Certified Cloud Security Professional.</div>
   </div>
